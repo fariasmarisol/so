@@ -17,7 +17,7 @@
 
 //----------------------------------------------------------------------
 // SimpleThread
-// 	Loop 10 times, yielding the CPU to another ready thread 
+// 	Loop 5 times, yielding the CPU to another ready thread 
 //	each iteration.
 //
 //	"name" points to a string with a thread name, just for
@@ -33,7 +33,7 @@ SimpleThread(void* name)
     // If the lines dealing with interrupts are commented,
     // the code will behave incorrectly, because
     // printf execution may cause race conditions.
-    for (int num = 0; num < 10; num++) {
+    for (int num = 0; num < 5; num++) {
         //IntStatus oldLevel = interrupt->SetLevel(IntOff);
 	printf("*** thread %s looped %d times\n", threadName, num);
 	//interrupt->SetLevel(oldLevel);
@@ -56,7 +56,7 @@ ThreadTest()
 {
     DEBUG('t', "Entering SimpleTest");
 
-    for ( int k=1; k<=10; k++) {
+    for ( int k=1; k<=5; k++) {
       char* threadname = new char[100];
       sprintf(threadname, "Hilo %d", k);
       Thread* newThread = new Thread (threadname);
